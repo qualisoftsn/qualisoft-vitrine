@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0B0F1A;
+  --foreground: #ffffff;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Convention Italic Qualisoft */
+.font-italic {
+  font-style: italic;
+}
+
+/* Scrollbar personnalisée pour le style Élite */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0F1A;
+}
+::-webkit-scrollbar-thumb {
+  background: #1D4ED8;
+  border-radius: 10px;
+}
