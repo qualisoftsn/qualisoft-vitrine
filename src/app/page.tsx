@@ -1,15 +1,14 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useState } from "react";
-import { 
-  Zap, ArrowRight, Database, Server, Layout, 
-  ShieldCheck, Globe, CheckCircle2, Mail, 
-  MapPin, Phone, Layers, GraduationCap, 
-  Briefcase, Menu, X, Linkedin, Facebook, Video,
-  Target, Rocket, Cpu
-} from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { 
+  Zap, ArrowRight, Database, ShieldCheck, 
+  Layers, GraduationCap, Briefcase, Menu, 
+  X, Linkedin, Facebook, Video, Target, Cpu,
+  Phone, Mail, MapPin
+} from "lucide-react";
 
 export default function VitrinePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,31 +18,26 @@ export default function VitrinePage() {
       title: "Digitalisation",
       icon: <Cpu size={32} />,
       desc: "L'agilité sans compromis. Dématérialisation totale de vos flux pour une réactivité décisionnelle en temps réel.",
-      color: "blue"
     },
     {
       title: "Solutions Métier",
       icon: <Layers size={32} />,
       desc: "Intelligence applicative sur-mesure. Des outils QHSE et industriels conçus pour la réalité du terrain africain.",
-      color: "indigo"
     },
     {
       title: "Stratégie",
       icon: <Target size={32} />,
       desc: "Architectes de votre futur. Structuration de votre vision RD 2030 pour transformer vos ambitions en résultats.",
-      color: "blue"
     },
     {
       title: "Conseil",
       icon: <Briefcase size={32} />,
       desc: "Ingénierie de la performance. Accompagnement expert sur les normes ISO pour ancrer l'excellence opérationnelle.",
-      color: "indigo"
     },
     {
       title: "Formation",
       icon: <GraduationCap size={32} />,
       desc: "Forgeurs de talents. Transfert d'expertise pour pérenniser vos certifications et maîtriser les technologies.",
-      color: "blue"
     }
   ];
 
@@ -53,7 +47,15 @@ export default function VitrinePage() {
       {/* 1. NAVIGATION BAR */}
       <nav className="fixed top-0 w-full z-[100] bg-[#0B0F1A]/90 backdrop-blur-xl border-b border-white/5 px-6 md:px-12 py-5 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <img src="/QSLogo.PNG" alt="Qualisoft Logo" className="h-10 md:h-12 w-auto object-contain" />
+          <Link href="/" className="relative h-10 w-32 md:h-12 md:w-40">
+            <Image 
+              src="/QSLogo.PNG" 
+              alt="Qualisoft Groupe Logo" 
+              fill 
+              className="object-contain"
+              priority
+            />
+          </Link>
           <div className="h-8 w-[1px] bg-white/10 hidden md:block"></div>
           <h1 className="text-xl font-black uppercase tracking-tighter hidden md:block italic">
             Qualisoft <span className="text-blue-600 font-black">Groupe</span>
@@ -68,17 +70,25 @@ export default function VitrinePage() {
           </Link>
         </div>
 
-        <button className="md:hidden text-white" onClick={() => setIsMenuOpen(true)}>
+        <button 
+          className="md:hidden text-white" 
+          onClick={() => setIsMenuOpen(true)}
+          aria-label="Ouvrir le menu"
+        >
           <Menu size={28} />
         </button>
       </nav>
 
       {/* MOBILE MENU */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[110] bg-[#0B0F1A] p-8 flex flex-col animate-in slide-in-from-right duration-300">
+        <div className="fixed inset-0 z-[110] bg-[#0B0F1A] p-8 flex flex-col animate-in fade-in slide-in-from-right duration-300">
           <div className="flex justify-between items-center mb-16">
-            <img src="/QSLogo.PNG" alt="Logo" className="h-10" />
-            <button onClick={() => setIsMenuOpen(false)}><X size={32} className="text-blue-600" /></button>
+            <div className="relative h-10 w-32">
+              <Image src="/QSLogo.PNG" alt="Logo" fill className="object-contain" />
+            </div>
+            <button onClick={() => setIsMenuOpen(false)} aria-label="Fermer le menu">
+              <X size={32} className="text-blue-600" />
+            </button>
           </div>
           <nav className="flex flex-col gap-8 text-3xl font-black uppercase italic">
             <Link href="#services" onClick={() => setIsMenuOpen(false)}>Nos Offres</Link>
@@ -93,14 +103,14 @@ export default function VitrinePage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="animate-in fade-in slide-in-from-left duration-1000">
             <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-blue-600/10 border border-blue-500/20 text-blue-400 text-[9px] font-black uppercase tracking-[0.3em] mb-10">
-              <Zap size={14} className="fill-blue-400" /> Souveraineté Numérique Sénégalaise
+              <Zap size={14} className="fill-blue-400" /> Souveraineté Numérique
             </div>
             <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-8 italic">
               L'Excellence <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Augmentée.</span>
             </h1>
             <p className="text-slate-400 text-lg md:text-xl font-medium mb-12 max-w-xl leading-relaxed italic">
-              Le hub d'innovation QHSE basé à Dakar. Nous fusionnons conseil stratégique et puissance applicative pour piloter votre performance depuis la Route du Lac Rose.
+              Le hub d'innovation QHSE basé à Dakar. Nous fusionnons conseil stratégique et puissance applicative pour piloter votre performance.
             </p>
             <div className="flex flex-wrap gap-4 text-[10px] font-black uppercase tracking-widest">
               <Link href="#services" className="px-10 py-5 bg-white text-black rounded-2xl hover:bg-blue-600 hover:text-white transition-all">
@@ -112,8 +122,17 @@ export default function VitrinePage() {
             </div>
           </div>
 
-          <div className="relative bg-slate-900/50 border border-white/10 rounded-[3rem] p-4 md:p-8 backdrop-blur-3xl shadow-2xl group">
-            <img src="/qs_schema_01.jpg" alt="Stack Technique Qualisoft" className="relative w-full h-auto rounded-[2rem] shadow-2xl" />
+          <div className="relative bg-slate-900/50 border border-white/10 rounded-[3rem] p-4 md:p-8 backdrop-blur-3xl shadow-2xl group overflow-hidden">
+            <div className="relative w-full aspect-[4/3]">
+              <Image 
+                src="/qs_schema_01.png" 
+                alt="Architecture Qualisoft RD 2030" 
+                fill
+                className="object-cover rounded-[2rem] shadow-2xl transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+            </div>
             <div className="absolute -bottom-6 -right-6 bg-blue-600 p-6 rounded-3xl shadow-2xl hidden md:block animate-bounce">
               <ShieldCheck size={32} />
             </div>
@@ -121,7 +140,7 @@ export default function VitrinePage() {
         </div>
       </section>
 
-      {/* 3. NOS 5 OFFRES STRATÉGIQUES */}
+      {/* 3. NOS 5 OFFRES STRATÉGIQUES (Optimisé Grid) */}
       <section id="services" className="py-24 px-6 bg-gradient-to-b from-transparent to-blue-900/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-left mb-20 italic">
@@ -131,7 +150,7 @@ export default function VitrinePage() {
             <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">5 piliers pour transformer votre organisation</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {services.map((service, i) => (
               <div key={i} className="group p-8 rounded-[2.5rem] bg-slate-900/40 border border-white/5 hover:border-blue-500/50 transition-all hover:-translate-y-2 duration-500 flex flex-col h-full">
                 <div className="mb-8 text-blue-500 group-hover:scale-110 transition-transform duration-500">
@@ -166,7 +185,7 @@ export default function VitrinePage() {
                   <span className="text-[9px] font-black px-4 py-2 rounded-full border border-blue-500/30 text-blue-400 uppercase">SaaS QHSE</span>
                 </div>
                 <h3 className="text-4xl font-black uppercase italic mb-4">Qualisoft <span className="text-blue-600">Élite</span></h3>
-                <p className="text-slate-400 text-lg leading-relaxed italic mb-10 grow">Pilotage complet du SMI. Automatisation des audits et tableaux de bord ISO en temps réel.</p>
+                <p className="text-slate-400 text-lg leading-relaxed italic mb-10 grow">Pilotage complet de votre Conformité. Nous vous amenons vers une certification assurée.</p>
                 <Link href="https://elite.qualisoft.sn" className="w-full py-5 bg-blue-600 rounded-2xl text-center font-black uppercase text-[10px] hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20">Accéder à Élite</Link>
               </div>
             </div>
@@ -190,17 +209,19 @@ export default function VitrinePage() {
       <footer className="py-20 px-6 border-t border-white/5 bg-[#080B14]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 mb-20 italic">
           <div>
-            <img src="/QSLogo.PNG" alt="Qualisoft Logo" className="h-10 mb-8 grayscale opacity-70" />
-            <p className="text-slate-500 text-sm italic font-medium">Digitalisation, Solutions métier, Stratégie et Conseil & Formation. Leader QHSE en Afrique de l'Ouest.</p>
+            <div className="relative h-10 w-32 mb-8 grayscale opacity-70">
+              <Image src="/QSLogo.PNG" alt="Qualisoft Logo" fill className="object-contain" />
+            </div>
+            <p className="text-slate-500 text-sm italic font-medium">Digitalisation, Solutions métier, Stratégie et Conseil & Formation. Simple, efficace et nous apportons une réelle valeur ajoutée.</p>
           </div>
           <div className="space-y-6">
             <h5 className="text-[10px] font-black uppercase tracking-widest text-blue-500">Contact & Réseaux</h5>
             <div className="flex items-center gap-4 text-slate-400 text-sm font-medium"><Phone size={16} className="text-blue-500" /> +221 77 441 09 02</div>
             <div className="flex items-center gap-4 text-slate-400 text-sm font-medium"><Mail size={16} className="text-blue-500" /> contact@qualisoft.sn</div>
             <div className="flex gap-6 mt-8">
-              <Link href="https://www.linkedin.com/company/qualisoft-sn" className="text-slate-500 hover:text-blue-500 transition-colors"><Linkedin size={20}/></Link>
+              <Link href="https://www.linkedin.com/company/qualisoft-sn" target="_blank" className="text-slate-500 hover:text-blue-500 transition-colors"><Linkedin size={20}/></Link>
               <Link href="#" className="text-slate-500 hover:text-blue-500 transition-colors"><Facebook size={20}/></Link>
-              <Link href="https://tiktok.com/@qualisoft2025" className="text-slate-500 hover:text-blue-500 transition-colors"><Video size={20}/></Link>
+              <Link href="https://tiktok.com/@qualisoft2025" target="_blank" className="text-slate-500 hover:text-blue-500 transition-colors"><Video size={20}/></Link>
             </div>
           </div>
           <div className="space-y-6">

@@ -5,28 +5,94 @@
 :root {
   --background: #0B0F1A;
   --foreground: #ffffff;
+  --elite-blue: #1D4ED8;
+  --elite-hover: #3B82F6;
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: ui-sans-serif, system-ui, sans-serif;
-  overflow-x: hidden;
+@layer base {
+  body {
+    @apply bg-[#0B0F1A] text-white antialiased overflow-x-hidden;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  /* Force l'italique signature de Qualisoft sur les titres et textes spécifiques */
+  h1, h2, h3, h4, p, span, a {
+    @apply italic;
+  }
 }
 
-/* Convention Italic Qualisoft */
-.font-italic {
-  font-style: italic;
-}
-
-/* Scrollbar personnalisée pour le style Élite */
+/* --- Scrollbar Style Élite --- */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: #0B0F1A;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #1D4ED8;
+  background: var(--elite-blue);
   border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--elite-hover);
+}
+
+/* --- Moteur d'Animations Qualisoft --- */
+@layer utilities {
+  .animate-in {
+    animation-duration: 1000ms;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fade-in {
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    animation-name: fade-in;
+  }
+
+  .slide-in-from-left {
+    @keyframes slide-in-left {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    animation-name: slide-in-left;
+  }
+
+  .slide-in-from-right {
+    @keyframes slide-in-right {
+      from { transform: translateX(100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    animation-name: slide-in-right;
+  }
+
+  .slide-in-from-bottom {
+    @keyframes slide-in-bottom {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    animation-name: slide-in-bottom;
+  }
+
+  /* Utilitaires de délai pour séquencer l'apparition des éléments */
+  .delay-300 { animation-delay: 300ms; }
+  .delay-500 { animation-delay: 500ms; }
+}
+
+/* --- Effets Spéciaux Vitrine --- */
+.backdrop-blur-xl {
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+
+/* Sélection de texte aux couleurs de la marque */
+::selection {
+  background-color: rgba(29, 78, 216, 0.4);
+  color: #ffffff;
 }

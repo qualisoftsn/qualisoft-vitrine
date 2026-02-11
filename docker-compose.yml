@@ -6,7 +6,7 @@ services:
     container_name: qualisoft-vitrine-prod
     restart: always
     ports:
-      - "3002:3000" # Mappe le port 80 du serveur vers le port 3000 du conteneur (Remplacement de l'ancien site)
+      - "3002:3000"
     environment:
       - NODE_ENV=production
       - NEXT_PUBLIC_ELITE_URL=https://elite.qualisoft.sn
@@ -15,4 +15,4 @@ services:
 
 networks:
   qualisoft-network:
-    driver: bridge
+    external: true # 👈 'true' si le réseau existe déjà pour l'Elite MS
