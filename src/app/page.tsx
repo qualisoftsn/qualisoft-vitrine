@@ -15,26 +15,31 @@ export default function VitrinePage() {
 
   const services = [
     {
+      slug: "digitalisation",
       title: "Digitalisation",
       icon: <Cpu size={32} />,
       desc: "L'agilité sans compromis. Dématérialisation totale de vos flux pour une réactivité décisionnelle en temps réel.",
     },
     {
+      slug: "solutions-metier",
       title: "Solutions Métier",
       icon: <Layers size={32} />,
       desc: "Intelligence applicative sur-mesure. Des outils QHSE et industriels conçus pour la réalité du terrain africain.",
     },
     {
-      title: "Stratégie",
+      slug: "strategie",
+      title: "Stratégie & IA",
       icon: <Target size={32} />,
-      desc: "Architectes de votre futur. Structuration de votre vision RD 2030 pour transformer vos ambitions en résultats.",
+      desc: "Architectes de votre futur. Intégration de l'IA prédictive pour transformer vos ambitions en souveraineté numérique.",
     },
     {
+      slug: "conseil",
       title: "Conseil",
       icon: <Briefcase size={32} />,
       desc: "Ingénierie de la performance. Accompagnement expert sur les normes ISO pour ancrer l'excellence opérationnelle.",
     },
     {
+      slug: "formation",
       title: "Formation",
       icon: <GraduationCap size={32} />,
       desc: "Forgeurs de talents. Transfert d'expertise pour pérenniser vos certifications et maîtriser les technologies.",
@@ -45,7 +50,7 @@ export default function VitrinePage() {
     <div className="min-h-screen bg-[#0B0F1A] text-white font-sans italic selection:bg-blue-600 overflow-x-hidden">
       
       {/* 1. NAVIGATION BAR */}
-      <nav className="fixed top-0 w-full z-[100] bg-[#0B0F1A]/90 backdrop-blur-xl border-b border-white/5 px-6 md:px-12 py-5 flex items-center justify-between">
+      <nav className="fixed top-[34px] w-full z-[100] bg-[#0B0F1A]/90 backdrop-blur-xl border-b border-white/5 px-6 md:px-12 py-5 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/" className="relative h-10 w-32 md:h-12 md:w-40">
             <Image 
@@ -64,7 +69,8 @@ export default function VitrinePage() {
 
         <div className="hidden md:flex items-center gap-8 text-[10px] font-black uppercase tracking-widest">
           <Link href="#services" className="hover:text-blue-500 transition-colors">Nos Offres</Link>
-          <Link href="#hubs" className="hover:text-blue-500 transition-colors">Plateformes</Link>
+          <Link href="/actualites" className="hover:text-blue-500 transition-colors">Actualités</Link>
+          <Link href="/ressources" className="hover:text-blue-500 transition-colors">Ressources</Link>
           <Link href="https://elite.qualisoft.sn" className="px-6 py-3 bg-blue-600 rounded-xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20">
             Plateforme Élite
           </Link>
@@ -92,25 +98,26 @@ export default function VitrinePage() {
           </div>
           <nav className="flex flex-col gap-8 text-3xl font-black uppercase italic">
             <Link href="#services" onClick={() => setIsMenuOpen(false)}>Nos Offres</Link>
-            <Link href="#hubs" onClick={() => setIsMenuOpen(false)}>Plateformes</Link>
+            <Link href="/actualites" onClick={() => setIsMenuOpen(false)}>Actualités</Link>
+            <Link href="/ressources" onClick={() => setIsMenuOpen(false)}>Ressources</Link>
             <Link href="https://elite.qualisoft.sn" className="text-blue-600">Accès Élite</Link>
           </nav>
         </div>
       )}
 
       {/* 2. HERO SECTION */}
-      <section className="relative pt-48 pb-20 px-6">
+      <section className="relative pt-56 pb-20 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="animate-in fade-in slide-in-from-left duration-1000">
             <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-blue-600/10 border border-blue-500/20 text-blue-400 text-[9px] font-black uppercase tracking-[0.3em] mb-10">
-              <Zap size={14} className="fill-blue-400" /> Souveraineté Numérique
+              <Zap size={14} className="fill-blue-400" /> Souveraineté Numérique & IA
             </div>
             <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-8 italic">
               L'Excellence <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Augmentée.</span>
             </h1>
             <p className="text-slate-400 text-lg md:text-xl font-medium mb-12 max-w-xl leading-relaxed italic">
-              Le hub d'innovation QHSE basé à Dakar. Nous fusionnons conseil stratégique et puissance applicative pour piloter votre performance.
+              Le hub d'innovation QHSE basé à Dakar. Nous fusionnons conseil stratégique et puissance de l'IA prédictive pour piloter votre performance.
             </p>
             <div className="flex flex-wrap gap-4 text-[10px] font-black uppercase tracking-widest">
               <Link href="#services" className="px-10 py-5 bg-white text-black rounded-2xl hover:bg-blue-600 hover:text-white transition-all">
@@ -140,7 +147,7 @@ export default function VitrinePage() {
         </div>
       </section>
 
-      {/* 3. NOS 5 OFFRES STRATÉGIQUES (Optimisé Grid) */}
+      {/* 3. NOS 5 OFFRES STRATÉGIQUES (Lien vers pages dynamiques) */}
       <section id="services" className="py-24 px-6 bg-gradient-to-b from-transparent to-blue-900/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-left mb-20 italic">
@@ -152,7 +159,7 @@ export default function VitrinePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {services.map((service, i) => (
-              <div key={i} className="group p-8 rounded-[2.5rem] bg-slate-900/40 border border-white/5 hover:border-blue-500/50 transition-all hover:-translate-y-2 duration-500 flex flex-col h-full">
+              <Link href={`/services/${service.slug}`} key={i} className="group p-8 rounded-[2.5rem] bg-slate-900/40 border border-white/5 hover:border-blue-500/50 transition-all hover:-translate-y-2 duration-500 flex flex-col h-full cursor-pointer">
                 <div className="mb-8 text-blue-500 group-hover:scale-110 transition-transform duration-500">
                   {service.icon}
                 </div>
@@ -161,7 +168,7 @@ export default function VitrinePage() {
                   {service.desc}
                 </p>
                 <div className="h-1 w-0 bg-blue-600 group-hover:w-full transition-all duration-700 mt-6"></div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -185,7 +192,7 @@ export default function VitrinePage() {
                   <span className="text-[9px] font-black px-4 py-2 rounded-full border border-blue-500/30 text-blue-400 uppercase">SaaS QHSE</span>
                 </div>
                 <h3 className="text-4xl font-black uppercase italic mb-4">Qualisoft <span className="text-blue-600">Élite</span></h3>
-                <p className="text-slate-400 text-lg leading-relaxed italic mb-10 grow">Pilotage complet de votre Conformité. Nous vous amenons vers une certification assurée.</p>
+                <p className="text-slate-400 text-lg leading-relaxed italic mb-10 grow">Pilotage complet de votre Conformité assisté par IA. Nous vous amenons vers une certification assurée.</p>
                 <Link href="https://elite.qualisoft.sn" className="w-full py-5 bg-blue-600 rounded-2xl text-center font-black uppercase text-[10px] hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20">Accéder à Élite</Link>
               </div>
             </div>
@@ -197,7 +204,7 @@ export default function VitrinePage() {
                   <span className="text-[9px] font-black px-4 py-2 rounded-full border border-white/10 text-slate-500 uppercase">Master Data</span>
                 </div>
                 <h3 className="text-4xl font-black uppercase italic mb-4">Qualisoft <span className="text-slate-500 font-black">Master</span></h3>
-                <p className="text-slate-400 text-lg leading-relaxed italic mb-10 grow">La tour de contrôle de vos données critiques. Intégrité et centralisation stratégique.</p>
+                <p className="text-slate-400 text-lg leading-relaxed italic mb-10 grow">La tour de contrôle de vos données critiques. Intégrité, centralisation et intelligence stratégique.</p>
                 <button className="w-full py-5 bg-white/5 border border-white/10 rounded-2xl text-center font-black uppercase text-[10px] cursor-default opacity-50">Prochainement</button>
               </div>
             </div>
@@ -212,7 +219,7 @@ export default function VitrinePage() {
             <div className="relative h-10 w-32 mb-8 grayscale opacity-70">
               <Image src="/QSLogo.PNG" alt="Qualisoft Logo" fill className="object-contain" />
             </div>
-            <p className="text-slate-500 text-sm italic font-medium">Digitalisation, Solutions métier, Stratégie et Conseil & Formation. Simple, efficace et nous apportons une réelle valeur ajoutée.</p>
+            <p className="text-slate-500 text-sm italic font-medium">Digitalisation, Solutions métier, Stratégie IA et Conseil & Formation. Simple, efficace et nous apportons une réelle valeur ajoutée.</p>
           </div>
           <div className="space-y-6">
             <h5 className="text-[10px] font-black uppercase tracking-widest text-blue-500">Contact & Réseaux</h5>
