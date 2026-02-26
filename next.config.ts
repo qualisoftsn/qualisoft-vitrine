@@ -1,10 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'standalone', // 👈 Indispensable pour un Docker optimisé
+  output: 'standalone', // CRUCIAL pour ton Dockerfile
   images: {
-    unoptimized: true, // Souvent nécessaire pour les petits VPS OVH sans librairie d'image native
-  }
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'elite.qualisoft.sn',
+      },
+    ],
+  },
+  // Désactive le linting pendant le build pour accélérer le déploiement OVH
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
